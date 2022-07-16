@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     container: {
       center:true,
-      padding:'16px',
+      padding:'20px',
     },
     extend: {
       colors: {
@@ -18,4 +18,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
