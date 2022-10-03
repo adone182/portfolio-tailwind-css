@@ -1,456 +1,813 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio | ROMADONI</title>
-  <!--compile css tailwind -->
-  <link rel="stylesheet" href="dist/css/final.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio | ROMADONI</title>
+    <!--compile css tailwind -->
+    <link rel="stylesheet" href="dist/css/final.css" />
 
-  <!-- font google EDU TAS Beginner -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- font google EDU TAS Beginner -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- localstorage for mode dark and light -->
-  <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
+    <!-- localstorage for mode dark and light -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark')
+        document.documentElement.classList.remove("dark");
       }
-  </script>
+    </script>
+  </head>
+  <body>
+    <!-- Navbar Section Start -->
+    <header
+      class="absolute top-0 left-0 z-10 flex w-full items-center bg-transparent"
+    >
+      <div class="container">
+        <div class="relative flex items-center justify-between">
+          <div class="px-4">
+            <a href="#home" class="block py-6 text-lg font-bold text-primary"
+              >Romadoni</a
+            >
+          </div>
+          <!-- hamburger -->
+          <div class="flex items-center px-4">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="absolute right-4 block lg:hidden"
+            >
+              <span
+                class="hamburger-line origin-top-left transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"
+              ></span>
+            </button>
 
-</head>
-<body>
+            <nav
+              id="nav-menu"
+              class="lg:right absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark dark:shadow-slate-400 lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent"
+            >
+              <ul class="block lg:flex">
+                <li class="group">
+                  <a
+                    href="#home"
+                    class="mx-8 flex py-2 text-base text-dark group-hover:text-primary group-active:text-blue-700 dark:text-white"
+                    >Home</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#about"
+                    class="mx-8 flex py-2 text-base text-dark group-hover:text-primary dark:text-white"
+                    >About</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#portfolio"
+                    class="mx-8 flex py-2 text-base text-dark group-hover:text-primary dark:text-white"
+                    >Portfolio</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#clients"
+                    class="mx-8 flex py-2 text-base text-dark group-hover:text-primary dark:text-white"
+                    >Clients</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#blog"
+                    class="mx-8 flex py-2 text-base text-dark group-hover:text-primary dark:text-white"
+                    >Blog</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#contact"
+                    class="mx-8 flex py-2 text-base text-dark group-hover:text-primary dark:text-white"
+                    >Contact</a
+                  >
+                </li>
 
-  <!-- Navbar Section Start -->
-  <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
-    <div class="container">
-      <div class="flex items-center justify-between relative">
-        <div class="px-4">
-          <a href="#home" class="font-bold text-lg text-primary block py-6">Romadoni</a>
+                <!-- toggle dark & light mode -->
+                <li class="mt-1 flex items-center pl-8">
+                  <div class="flex">
+                    <!-- light mode -->
+                    <span class="mr-2 text-sm text-slate-500">light</span>
+                    <input type="checkbox" id="dark-toggle" class="hidden" />
+                    <label for="dark-toggle">
+                      <div
+                        class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1"
+                      >
+                        <div
+                          class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"
+                        ></div>
+                      </div>
+                    </label>
+                    <!-- dark mode -->
+                    <span class="ml-2 text-sm text-slate-500">dark</span>
+                  </div>
+                </li>
+                <!-- end toggle dark & light mode -->
+              </ul>
+            </nav>
+          </div>
+          <!-- end hamburger -->
         </div>
-        <!-- hamburger -->
-        <div class="flex items-center px-4">
-          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left "></span>
-            <span class="hamburger-line transition duration-300 ease-in-out"></span>
-            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left "></span>
-          </button>
-
-          <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:right lg:rounded-none dark:bg-dark lg:dark:bg-transparent dark:shadow-slate-400 ">
-
-            <ul class="block lg:flex">
-              <li class="group">
-                <a href="#home" class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white flex">Home</a>
-              </li>
-              <li class="group">
-                <a href="#about" class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white flex">About</a>
-              </li>
-              <li class="group">
-                <a href="#portfolio" class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white flex">Portfolio</a>
-              </li>
-              <li class="group">
-                <a href="#clients" class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white flex">Clients</a>
-              </li>
-              <li class="group">
-                <a href="#blog" class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white flex">Blog</a>
-              </li>
-              <li class="group">
-                <a href="#contact" class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white flex">Contact</a>
-              </li>
-
-              <!-- toggle dark & light mode -->
-              <li class="mt-1 flex items-center pl-8">
-                <div class="flex">
-                  <!-- light mode -->
-                  <span class="mr-2 text-sm text-slate-500">light</span>
-                  <input type="checkbox" id="dark-toggle" class="hidden">
-                  <label for="dark-toggle">
-                    <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
-                      <div class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"></div>
-                    </div>
-                  </label>
-                  <!-- dark mode -->
-                  <span class="ml-2 text-sm text-slate-500">dark</span>
-                </div>
-              </li>
-              <!-- end toggle dark & light mode -->
-              
-            </ul>
-          </nav>
-        </div>
-        <!-- end hamburger -->
       </div>
-    </div>
-  </header>
-  <!-- Navbar Section End -->
+    </header>
+    <!-- Navbar Section End -->
 
-  <!-- Hero section Start -->
-  <section id="home" class="pt-36 dark:bg-dark">
-    <div class="container">
-      <div class="flex flex-wrap">
-        <div class="w-full self-center px-4 lg:w-1/2">
-          <h1 class="text-base font-semibold text-primary md:text-xl">Hi everyone 👋, I'm <span class="mt-1 block font-bold text-4xl lg:text-5xl text-dark dark:text-white">ROMADONI</span></h1>
-          <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl dark:text-primary"><span class="text-dark dark:text-white">UI Designer ||</span> Web Developer <span class="text-dark dark:text-white">|| Frontend Developer</span></h2>
-          <p class="font-medium text-slate-400 mb-10 leading-relaxed lg:text-xl">Kekuatan terbesar dari seorang programmer adalah 
-          <span class="text-dark dark:text-white font-bold">kesabarannya</span> dalam menemukan
-          <span class="text-dark dark:text-white font-bold">Setiap error</span> yang merusak perintah eksekusi</p>
-          <!-- <p class="font-medium text-slate-400 mb-10 leading-relaxed">Belajar coding itu mudah dan menyenagkan bukan.
+    <!-- Hero section Start -->
+    <section id="home" class="pt-36 dark:bg-dark">
+      <div class="container">
+        <div class="flex flex-wrap">
+          <div class="w-full self-center px-4 lg:w-1/2">
+            <h1 class="text-base font-semibold text-primary md:text-xl">
+              Hi everyone 👋, I'm
+              <span
+                class="mt-1 block text-4xl font-bold text-dark dark:text-white lg:text-5xl"
+                >ROMADONI</span
+              >
+            </h1>
+            <h2
+              class="mb-5 text-lg font-medium text-secondary dark:text-primary lg:text-2xl"
+            >
+              <span class="text-dark dark:text-white">UI Designer ||</span> Web
+              Developer
+              <span class="text-dark dark:text-white"
+                >|| Frontend Developer</span
+              >
+            </h2>
+            <p
+              class="mb-10 font-medium leading-relaxed text-slate-400 lg:text-xl"
+            >
+              Kekuatan terbesar dari seorang programmer adalah
+              <span class="font-bold text-dark dark:text-white"
+                >kesabarannya</span
+              >
+              dalam menemukan
+              <span class="font-bold text-dark dark:text-white"
+                >Setiap error</span
+              >
+              yang merusak perintah eksekusi
+            </p>
+            <!-- <p class="font-medium text-slate-400 mb-10 leading-relaxed">Belajar coding itu mudah dan menyenagkan bukan.
           <span class="text-dark font-bold">Bukan!</span></p> -->
 
-          <!-- button -->
-          <a href="#" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">Let's Talk</a>
-          <!-- end button -->
-        </div>
+            <!-- button -->
+            <a
+              href="#contact"
+              class="rounded-full bg-primary py-3 px-8 text-base font-semibold text-white transition duration-300 ease-in-out hover:opacity-80 hover:shadow-lg"
+              >Let's Talk</a
+            >
+            <!-- end button -->
+          </div>
 
-        <div class="w-full self-end px-4 lg:w-1/2">
-          <div class="relative mt-10 lg:mt-0 lg:right-0">
-            <img src="dist/img/me.png" alt="Romadoni" class="relative z-10 max-w-full mx-auto">
-            <!-- svg code -->
-            <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 md:scale-125">
-              <!-- <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <div class="w-full self-end px-4 lg:w-1/2">
+            <div class="relative mt-10 lg:right-0 lg:mt-0">
+              <img
+                src="dist/img/me.png"
+                alt="Romadoni"
+                class="relative z-10 mx-auto max-w-full"
+              />
+              <!-- svg code -->
+              <span
+                class="absolute -bottom-1 left-1/2 -translate-x-1/2 md:scale-125"
+              >
+                <!-- <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#14b8a6"
                   d="M49.6,-52.1C60.4,-38.8,62.7,-19.4,62.2,-0.5C61.8,18.5,58.6,36.9,47.7,49C36.9,61.1,18.5,66.8,1.3,65.5C-15.9,64.3,-31.7,55.9,-47.7,43.8C-63.7,31.7,-79.8,15.9,-78.8,1C-77.8,-13.9,-59.7,-27.7,-43.7,-41.1C-27.7,-54.4,-13.9,-67.2,2.8,-69.9C19.4,-72.7,38.8,-65.4,49.6,-52.1Z"
                   transform="translate(100 100) scale(1.0)" />
               </svg> -->
-              <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#14b8a6"
-                  d="M33.1,-42.4C40.8,-33,43.4,-20.6,42.8,-9.7C42.1,1.2,38.2,10.5,32.8,18.1C27.4,25.7,20.5,31.6,10.3,40.6C0.1,49.5,-13.3,61.6,-19.8,57.8C-26.2,53.9,-25.6,34.2,-26.9,20.9C-28.2,7.6,-31.4,0.7,-34,-9.8C-36.7,-20.3,-38.8,-34.5,-33,-44.2C-27.2,-53.9,-13.6,-59.1,-0.4,-58.5C12.7,-58,25.5,-51.8,33.1,-42.4Z"
-                  transform="translate(100 100) scale(1.1)" />
-              </svg>
-            </span>
-
+                <svg
+                  width="400"
+                  height="400"
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="#14b8a6"
+                    d="M33.1,-42.4C40.8,-33,43.4,-20.6,42.8,-9.7C42.1,1.2,38.2,10.5,32.8,18.1C27.4,25.7,20.5,31.6,10.3,40.6C0.1,49.5,-13.3,61.6,-19.8,57.8C-26.2,53.9,-25.6,34.2,-26.9,20.9C-28.2,7.6,-31.4,0.7,-34,-9.8C-36.7,-20.3,-38.8,-34.5,-33,-44.2C-27.2,-53.9,-13.6,-59.1,-0.4,-58.5C12.7,-58,25.5,-51.8,33.1,-42.4Z"
+                    transform="translate(100 100) scale(1.1)"
+                  />
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- Hero section End -->
 
-  </section>
-  <!-- Hero section End -->
+    <!-- About section Start -->
+    <section id="about" class="pt-36 pb-32 dark:bg-dark">
+      <div class="container">
+        <div class="flex flex-wrap">
+          <div class="mb-10 w-full px-4 lg:w-1/2">
+            <h4 class="mb-3 text-lg font-bold uppercase text-primary">
+              About Me
+            </h4>
+            <h2
+              class="mb-5 max-w-md text-3xl font-bold text-dark dark:text-white lg:text-4xl"
+            >
+              Let's join us, Study web programing in RuangEngineer
+            </h2>
+            <p class="max-w-xl text-base font-medium text-secondary lg:text-lg">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+              tempora ratione, aperiam maiores non deleniti quisquam mollitia
+              enim?
+            </p>
+          </div>
+          <div class="w-full px-4 lg:w-1/2">
+            <h3
+              class="mb-4 text-2xl font-semibold text-dark dark:text-white lg:pt-10 lg:text-3xl"
+            >
+              Let's be friends
+            </h3>
+            <p class="mb-10 text-base font-medium text-secondary lg:text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium soluta quae distinctio, aspernatur eveniet minima
+              dolorum magni rem odit debitis perspiciatis numquam nostrum minus
+              aut sequi quos officiis laborum? Assumenda!
+            </p>
 
-  <!-- About section Start -->
-  <section id="about" class="pt-36 pb-32 dark:bg-dark">
-    <div class="container">
-      <div class="flex flex-wrap">
-        <div class="w-full px-4 mb-10 lg:w-1/2">
-          <h4 class="font-bold uppercase text-primary text-lg mb-3">About Me</h4>
-          <h2 class="font-bold text-dark dark:text-white text-3xl mb-5 max-w-md lg:text-4xl">Let's join us, Study web programing in RuangEngineer</h2>
-          <p class="font-medium text-base text-secondary max-w-xl lg:text-lg">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo tempora ratione, aperiam maiores non deleniti quisquam mollitia enim?</p>
+            <div class="mt-3 flex items-center">
+              <!-- linked -->
+              <a
+                href="https://www.linkedin.com/in/roma-doni-b62750226/"
+                target="_blank"
+                class="mr-3 flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-300 hover:border-primary hover:bg-primary hover:text-white"
+              >
+                <svg
+                  role="img"
+                  width="20"
+                  class="fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>LinkedIn</title>
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Github -->
+              <a
+                href="https://github.com/adone182/"
+                target="_blank"
+                class="mr-3 flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-600 hover:border-primary hover:bg-primary hover:text-white dark:text-slate-300"
+              >
+                <svg
+                  role="img"
+                  width="20"
+                  class="fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>GitHub</title>
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="w-full px-4 lg:w-1/2">
-          <h3 class="font-semibold text-dark dark:text-white text-2xl mb-4 lg:text-3xl lg:pt-10">Let's be friends</h3>
-          <p class="font-medium text-base text-secondary mb-10 lg:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium soluta quae distinctio, aspernatur eveniet minima dolorum magni rem odit debitis perspiciatis numquam nostrum minus aut sequi quos officiis laborum? Assumenda!</p>
-          
-          <div class="flex items-center mt-3">
+      </div>
+    </section>
+    <!-- About section End -->
+
+    <!-- Portfolio Section Start -->
+    <section id="portfolio" class="bg-slate-100 pt-36 pb-16 dark:bg-slate-800">
+      <div class="container">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-16 max-w-xl text-center">
+            <h4 class="mb-2 text-lg font-semibold text-primary">Portfolio</h4>
+            <h2
+              class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl lg:text-5xl"
+            >
+              Latest Project
+            </h2>
+            <p class="text-md font-medium text-secondary md:text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+              consequuntur facere adipisci eum quae, suscipit maiores veniam
+              eaque dicta! Harum ex minus minima?
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex w-full flex-wrap justify-center px-4 xl:mx-auto xl:w-10/12"
+        >
+          <div class="mb-12 p-4 md:w-1/2">
+            <div class="overflow-hidden rounded-md shadow-md">
+              <img
+                src="dist/img/portfolio/compro-real-estate.PNG"
+                alt="COMPRO"
+                width="w-full"
+              />
+            </div>
+            <h3
+              class="mt-5 mb-3 text-xl font-semibold text-dark dark:text-white"
+            >
+              Company Profile Real Estate
+            </h3>
+            <p class="text-base font-medium text-secondary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia
+              laudantium tenetur porro, delectus sint provident suscipit
+              debitis!
+            </p>
+          </div>
+
+          <div class="mb-12 p-4 md:w-1/2">
+            <div class="overflow-hidden rounded-md shadow-md">
+              <img
+                src="dist/img/portfolio/dones-store.PNG"
+                alt="E-Commerce"
+                width="w-full"
+              />
+            </div>
+            <h3
+              class="mt-5 mb-3 text-xl font-semibold text-dark dark:text-white"
+            >
+              E-Commerce DONES STORE
+            </h3>
+            <p class="text-base font-medium text-secondary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia
+              laudantium tenetur porro, delectus sint provident suscipit
+              debitis!
+            </p>
+          </div>
+
+          <div class="mb-12 p-4 md:w-1/2">
+            <div class="overflow-hidden rounded-md shadow-md">
+              <img
+                src="dist/img/portfolio/DONES-web-travel.PNG"
+                alt="TRAVEL AGENCY"
+                width="w-full"
+              />
+            </div>
+            <h3
+              class="mt-5 mb-3 text-xl font-semibold text-dark dark:text-white"
+            >
+              DONES TRAVEL AGENCY
+            </h3>
+            <p class="text-base font-medium text-secondary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia
+              laudantium tenetur porro, delectus sint provident suscipit
+              debitis!
+            </p>
+          </div>
+
+          <div class="mb-12 p-4 md:w-1/2">
+            <div class="overflow-hidden rounded-md shadow-md">
+              <img
+                src="dist/img/portfolio/flat-people.PNG"
+                alt="Flat People Ilustration"
+                width="w-full"
+              />
+            </div>
+            <h3
+              class="mt-5 mb-3 text-xl font-semibold text-dark dark:text-white"
+            >
+              Design Flat People
+            </h3>
+            <p class="text-base font-medium text-secondary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia
+              laudantium tenetur porro, delectus sint provident suscipit
+              debitis!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Portfolio Section End -->
+
+    <!-- Clients Section Start -->
+    <section id="clients" class="bg-slate-800 pt-36 pb-32 dark:bg-slate-300">
+      <div class="container">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-16 max-w-xl text-center">
+            <h4 class="mb-2 text-lg font-semibold text-primary">Clients</h4>
+            <h2
+              class="mb-4 text-3xl font-bold text-white dark:text-dark sm:text-4xl lg:text-5xl"
+            >
+              Who have worked together
+            </h2>
+            <p class="text-md font-medium text-secondary md:text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+              consequuntur facere adipisci eum quae, suscipit maiores veniam
+              eaque dicta! Harum ex minus minima?
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full px-4">
+          <div class="flex flex-wrap items-center justify-center">
+            <a href="#">
+              <img
+                class="mx-4 max-w-[120px] py-4 opacity-60 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 lg:mx-6 xl:mx-8"
+                src="dist/img/clients/Gojek_logo_2019.svg.png"
+                alt="Google"
+              />
+            </a>
+            <a href="#">
+              <img
+                class="mx-4 max-w-[120px] py-4 opacity-60 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 lg:mx-6 xl:mx-8"
+                src="dist/img/clients/Shopee.png"
+                alt="Google"
+              />
+            </a>
+            <a href="#">
+              <img
+                class="mx-4 max-w-[120px] py-4 opacity-60 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 lg:mx-6 xl:mx-8"
+                src="dist/img/clients/Tokopedia.svg.png"
+                alt="Google"
+              />
+            </a>
+            <a href="#">
+              <img
+                class="mx-4 max-w-[120px] py-4 opacity-60 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 lg:mx-6 xl:mx-8"
+                src="dist/img/clients/Google_logo_(2010-2013).svg.png"
+                alt="Google"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Clients Section End -->
+
+    <!-- Blog Section Start -->
+    <section id="blog" class="bg-slate-100 pt-36 pb-32 dark:bg-slate-800">
+      <div class="container">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-16 max-w-xl text-center">
+            <h4 class="mb-2 text-lg font-semibold text-primary">BLogs</h4>
+            <h2
+              class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl lg:text-5xl"
+            >
+              Latest Articel
+            </h2>
+            <p class="text-md font-medium text-secondary md:text-lg">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
+              earum explicabo enim qui hic corporis accusamus mollitia.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap">
+          <div class="xl:1/3 w-full px-4 md:w-1/2 lg:w-1/3">
+            <div
+              class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800"
+            >
+              <img
+                src="https://source.unsplash.com/360x200?programming"
+                alt="Programming"
+                class="w-full"
+              />
+              <div class="py-8 px-6">
+                <h3>
+                  <a
+                    class="mb-3 block truncate text-xl font-semibold text-dark hover:text-primary dark:text-white"
+                    href="#"
+                    >Web Programming</a
+                  >
+                </h3>
+                <p class="mb-6 text-base font-medium text-secondary">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                  voluptatum aperiam in.
+                </p>
+                <a
+                  class="rounded-md bg-primary py-2 px-4 text-sm font-medium text-white hover:opacity-80 dark:text-white"
+                  href="#"
+                  >Read more...</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="xl:1/3 w-full px-4 md:w-1/2 lg:w-1/3">
+            <div
+              class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800"
+            >
+              <img
+                src="https://source.unsplash.com/360x200?ui&uidesign"
+                alt="UI &UX Design"
+                class="w-full"
+              />
+              <div class="py-8 px-6">
+                <h3>
+                  <a
+                    class="mb-3 block truncate text-xl font-semibold text-dark hover:text-primary dark:text-white"
+                    href="#"
+                    >UI / UI Design</a
+                  >
+                </h3>
+                <p class="mb-6 text-base font-medium text-secondary">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                  voluptatum aperiam in.
+                </p>
+                <a
+                  class="rounded-md bg-primary py-2 px-4 text-sm font-medium text-white hover:opacity-80 dark:text-white"
+                  href="#"
+                  >Read more...</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="xl:1/3 w-full px-4 md:w-1/2 lg:w-1/3">
+            <div
+              class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800"
+            >
+              <img
+                src="https://source.unsplash.com/360x200?sports"
+                alt="Sports"
+                class="w-full"
+              />
+              <div class="py-8 px-6">
+                <h3>
+                  <a
+                    class="mb-3 block truncate text-xl font-semibold text-dark hover:text-primary dark:text-white"
+                    href="#"
+                    >Sports</a
+                  >
+                </h3>
+                <p class="mb-6 text-base font-medium text-secondary">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                  voluptatum aperiam in.
+                </p>
+                <a
+                  class="rounded-md bg-primary py-2 px-4 text-sm font-medium text-white hover:opacity-80"
+                  href="#"
+                  >Read more...</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Blog Section End -->
+
+    <!-- Contact Section Start -->
+    <section id="contact" class="pt-36 pb-32 dark:bg-dark">
+      <div class="container">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-16 max-w-xl text-center">
+            <h4 class="mb-2 text-lg font-semibold text-primary">Contact</h4>
+            <h2
+              class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl lg:text-5xl"
+            >
+              Contact us
+            </h2>
+            <p class="text-md font-medium text-secondary md:text-lg">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
+              earum explicabo enim qui hic corporis accusamus mollitia.
+            </p>
+          </div>
+        </div>
+
+        <!-- form -->
+        <form>
+          <div class="w-full lg:mx-auto lg:w-2/3">
+            <div class="mb-8 w-full px-4">
+              <label for="name" class="text-base font-bold text-primary"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                class="mt-3 w-full rounded-md bg-slate-300 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:text-white"
+              />
+            </div>
+
+            <div class="mb-8 w-full px-4">
+              <label for="email" class="text-base font-bold text-primary"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="mt-3 w-full rounded-md bg-slate-300 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:text-white"
+              />
+            </div>
+
+            <div class="mb-8 w-full px-4">
+              <label for="message" class="text-base font-bold text-primary"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                class="mt-3 h-32 w-full rounded-md bg-slate-300 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:text-white"
+              ></textarea>
+            </div>
+
+            <div class="w-full px-4">
+              <button
+                class="w-full rounded-full bg-primary py-2 px-8 text-base font-semibold text-white transition duration-500 hover:opacity-80 hover:shadow-lg"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Start -->
+    <section id="footer" class="bg-slate-800 pt-24 pb-12">
+      <div class="container">
+        <div class="flex flex-wrap">
+          <div class="mb-12 w-full px-4 font-medium text-slate-300 md:w-1/3">
+            <h2 class="mb-5 text-4xl font-bold text-white">RuangEngineer</h2>
+            <h3 class="mb-2 text-2xl font-bold">Contact Us</h3>
+            <p>Romadoni</p>
+            <p>Jl. Winong dalam No 61 Kel. Sudimara Timur Kec. Ciledug</p>
+            <p>Tangerang, Banten</p>
+          </div>
+
+          <div class="mb-12 mt-[17px] w-full px-4 md:w-1/3">
+            <h3 class="mb-5 text-xl font-semibold text-white">
+              Articel Categories
+            </h3>
+            <ul class="text-slate-300">
+              <li>
+                <a
+                  href="#"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Web Programming</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >UI & UX Design</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Sports</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-12 mt-[17px] w-full px-4 md:w-1/3">
+            <h3 class="mb-5 text-xl font-semibold text-white">Links</h3>
+            <ul class="text-slate-300">
+              <li>
+                <a
+                  href="#home"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Home</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#about"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >About</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#portfolio"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Portfolio</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#clients"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Clients</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#blog"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Blog</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#contact"
+                  class="mb-2 inline-block text-base hover:text-primary"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-full border-t border-slate-700 pt-10">
+          <div class="mb-5 flex items-center justify-center">
             <!-- linked -->
-            <a href="https://www.linkedin.com/in/roma-doni-b62750226/" target="_blank" class="w-10 h-10 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-slate-300 hover:text-white">
-              <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <a
+              href="https://www.linkedin.com/in/roma-doni-b62750226/"
+              target="_blank"
+              class="mr-3 flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-300 hover:border-primary hover:bg-primary hover:text-white"
+            >
+              <svg
+                role="img"
+                width="20"
+                class="fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <title>LinkedIn</title>
                 <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
               </svg>
             </a>
 
             <!-- Github -->
-            <a href="https://github.com/adone182/" target="_blank" class="w-10 h-10 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-slate-600 dark:text-slate-300 hover:text-white">
-              <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <a
+              href="https://github.com/adone182/"
+              target="_blank"
+              class="mr-3 flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600 hover:border-primary hover:bg-primary hover:text-white"
+            >
+              <svg
+                role="img"
+                width="20"
+                class="fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <title>GitHub</title>
                 <path
-                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                />
               </svg>
             </a>
           </div>
+
+          <p class="text-center text-xs font-medium text-slate-500">
+            Created with <span class="text-red-500">❤</span> by
+            <a
+              href="https://www.linkedin.com/in/roma-doni-b62750226/"
+              target="_blank"
+              class="font-bold text-primary"
+              >Romadoni</a
+            >, using
+            <a
+              href="https://tailwindcss.com"
+              target="_blank"
+              class="font-bold text-sky-500"
+              >Tailwind CSS</a
+            >
+          </p>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- About section End -->
-  
-  <!-- Portfolio Section Start -->
-  <section id="portfolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2">Portfolio</h4>
-          <h2 class="font-bold text-dark dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Latest Project</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-            consequuntur facere adipisci eum quae, suscipit maiores veniam eaque dicta! Harum ex minus minima?</p>
-        </div>
-      </div>
+    </section>
+    <!-- Footer Section End -->
 
-    <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
-
-        <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <img src="/dist/img/portfolio/compro-real-estate.PNG" alt="COMPRO" width="w-full">
-          </div>
-          <h3 class="font-semibold text-xl text-dark dark:text-white mt-5 mb-3">Company Profile Real Estate</h3>
-          <p class="font-medium text-base text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia
-            laudantium tenetur porro, delectus sint provident suscipit debitis!</p>
-        </div>
-      
-        <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <img src="/dist/img/portfolio/dones-store.PNG" alt="E-Commerce" width="w-full">
-          </div>
-          <h3 class="font-semibold text-xl text-dark dark:text-white mt-5 mb-3">E-Commerce DONES STORE</h3>
-          <p class="font-medium text-base text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia laudantium tenetur porro, delectus sint provident suscipit debitis!</p>
-        </div>
-
-        <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <img src="/dist/img/portfolio/DONES-web-travel.PNG" alt="TRAVEL AGENCY" width="w-full">
-          </div>
-          <h3 class="font-semibold text-xl text-dark dark:text-white mt-5 mb-3">DONES TRAVEL AGENCY</h3>
-          <p class="font-medium text-base text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia laudantium tenetur porro, delectus sint provident suscipit debitis!</p>
-        </div>
-
-        <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <img src="/dist/img/portfolio/flat-people.PNG" alt="Flat People Ilustration" width="w-full">
-          </div>
-          <h3 class="font-semibold text-xl text-dark dark:text-white mt-5 mb-3">Design Flat People</h3>
-          <p class="font-medium text-base text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quia laudantium tenetur porro, delectus sint provident suscipit debitis!</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- Portfolio Section End -->
-
-  <!-- Clients Section Start -->
-  <section id="clients" class="pt-36 pb-32 bg-slate-800 dark:bg-slate-300">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2">Clients</h4>
-          <h2 class="font-bold text-white dark:text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Who have worked together</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Optio
-            consequuntur facere adipisci eum quae, suscipit maiores veniam eaque dicta! Harum ex minus minima?</p>
-        </div>
-      </div>
-
-      <div class="w-full px-4">
-        <div class="flex flex-wrap items-center justify-center">
-          <a href="#">
-            <img class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-500 hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8" src="dist/img/clients/Gojek_logo_2019.svg.png" alt="Google">
-          </a>
-          <a href="#">
-            <img class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-500 hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8" src="dist/img/clients/Shopee.png" alt="Google">
-          </a>
-          <a href="#">
-            <img class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-500 hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8" src="dist/img/clients/Tokopedia.svg.png" alt="Google">
-          </a>
-          <a href="#">
-            <img class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-500 hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8" src="dist/img/clients/Google_logo_(2010-2013).svg.png" alt="Google">
-          </a>
-          
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Clients Section End -->
-
-  <!-- Blog Section Start -->
-  <section id="blog" class="pt-36 pb-32 bg-slate-100 dark:bg-slate-800">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2">BLogs</h4>
-          <h2 class="font-bold text-dark dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Latest Articel</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo earum explicabo enim qui hic corporis accusamus mollitia.</p>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap">
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3 xl:1/3">
-          <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg mb-10 overflow-hidden">
-            <img src="https://source.unsplash.com/360x200?programming" alt="Programming" class="w-full">
-            <div class="py-8 px-6">
-              <h3>
-                <a class="block mb-3 text-xl font-semibold text-dark dark:text-white hover:text-primary truncate" href="#">Web Programming</a>
-              </h3>
-              <p class="font-medium text-secondary text-base mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum aperiam in.</p>
-              <a class="font-medium text-sm text-white dark:text-white bg-primary py-2 px-4 rounded-md hover:opacity-80" href="#">Read more...</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3 xl:1/3">
-          <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg mb-10 overflow-hidden">
-            <img src="https://source.unsplash.com/360x200?ui&uidesign" alt="UI &UX Design" class="w-full">
-            <div class="py-8 px-6">
-              <h3>
-                <a class="block mb-3 text-xl font-semibold text-dark dark:text-white hover:text-primary truncate" href="#">UI / UI Design</a>
-              </h3>
-              <p class="font-medium text-secondary text-base mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum aperiam in.</p>
-              <a class="font-medium text-sm text-white dark:text-white bg-primary py-2 px-4 rounded-md hover:opacity-80" href="#">Read more...</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3 xl:1/3">
-          <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg mb-10 overflow-hidden">
-            <img src="https://source.unsplash.com/360x200?sports" alt="Sports" class="w-full">
-            <div class="py-8 px-6">
-              <h3>
-                <a class="block mb-3 text-xl font-semibold text-dark dark:text-white hover:text-primary truncate" href="#">Sports</a>
-              </h3>
-              <p class="font-medium text-secondary text-base mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum aperiam in.</p>
-              <a class="font-medium text-sm text-white bg-primary py-2 px-4 rounded-md hover:opacity-80" href="#">Read more...</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- Blog Section End -->
-
-  <!-- Contact Section Start -->
-  <section id="contact" class="pt-36 pb-32 dark:bg-dark">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2">Contact</h4>
-          <h2 class="font-bold text-dark dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Contact us</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Nemo earum explicabo enim qui hic corporis accusamus mollitia.</p>
-        </div>
-      </div>
-
-      <!-- form -->
-      <form>
-      <div class="w-full lg:w-2/3 lg:mx-auto">
-
-      <div class="w-full px-4 mb-8">
-        <label for="name" class="text-base font-bold text-primary">Name</label>
-        <input type="text" id="name" class="w-full mt-3 bg-slate-300 text-dark dark:text-white p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
-      </div>
-
-      <div class="w-full px-4 mb-8">
-        <label for="email" class="text-base font-bold text-primary">Email</label>
-        <input type="email" id="email" class="w-full mt-3 bg-slate-300 text-dark dark:text-white p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
-      </div>
-
-      <div class="w-full px-4 mb-8">
-        <label for="message" class="text-base font-bold text-primary">Message</label>
-        <textarea id="message" class="w-full mt-3 bg-slate-300 text-dark dark:text-white p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"></textarea>
-      </div>
-
-      <div class="w-full px-4">
-        <button class="text-base font-semibold text-white bg-primary py-2 px-8 rounded-full w-full transition duration-500 hover:opacity-80 hover:shadow-lg">Send</button>
-      </div>
-
-      </div>
-      </form>
-    </div>
-  </section>
-  <!-- Contact Section End -->
-
-  <!-- Footer Section Start -->
-  <section id="footer" class="pt-24 pb-12 bg-slate-800">
-   <div class="container">
-     <div class="flex flex-wrap">
-       <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
-        <h2 class="text-white font-bold text-4xl mb-5">RuangEngineer</h2>
-        <h3 class="font-bold text-2xl mb-2">Contact Us</h3>
-        <p>Romadoni</p>
-        <p>Jl. Winong dalam No 61 Kel. Sudimara Timur Kec. Ciledug</p>
-        <p>Tangerang, Banten</p>
-       </div>
-
-       <div class="w-full px-4 mb-12 md:w-1/3 mt-[17px]">
-          <h3 class="font-semibold text-xl text-white mb-5">Articel Categories</h3>
-          <ul class="text-slate-300">
-           
-            <li>
-              <a href="#" class="text-base inline-block hover:text-primary mb-2">Web Programming</a>
-            </li>
-
-            <li>
-              <a href="#" class="text-base inline-block hover:text-primary mb-2">UI & UX Design</a>
-            </li>
-
-            <li>
-              <a href="#" class="text-base inline-block hover:text-primary mb-2">Sports</a>
-            </li>
-
-          </ul>
-       </div>
-
-       <div class="w-full px-4 mb-12 md:w-1/3 mt-[17px]">
-          <h3 class="font-semibold text-xl text-white mb-5">Links</h3>
-          <ul class="text-slate-300">
-           
-            <li>
-              <a href="#home" class="text-base inline-block hover:text-primary mb-2">Home</a>
-            </li>
-
-            <li>
-              <a href="#about" class="text-base inline-block hover:text-primary mb-2">About</a>
-            </li>
-
-            <li>
-              <a href="#portfolio" class="text-base inline-block hover:text-primary mb-2">Portfolio</a>
-            </li>
-
-            <li>
-              <a href="#clients" class="text-base inline-block hover:text-primary mb-2">Clients</a>
-            </li>
-
-            <li>
-              <a href="#blog" class="text-base inline-block hover:text-primary mb-2">Blog</a>
-            </li>
-
-            <li>
-              <a href="#contact" class="text-base inline-block hover:text-primary mb-2">Contact</a>
-            </li>
-
-          </ul>
-       </div>
-     </div>
-
-     <div class="w-full pt-10 border-t border-slate-700">
-      <div class="flex items-center justify-center mb-5">
-        <!-- linked -->
-        <a href="https://www.linkedin.com/in/roma-doni-b62750226/" target="_blank"
-          class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-slate-300 hover:text-white">
-          <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <title>LinkedIn</title>
-            <path
-              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-          </svg>
-        </a>
-      
-        <!-- Github -->
-        <a href="https://github.com/adone182/" target="_blank"
-          class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-slate-600 hover:text-white">
-          <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <title>GitHub</title>
-            <path
-              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-          </svg>
-        </a>
-      </div>
-
-      <p class="font-medium text-xs text-slate-500 text-center">Created with <span class="text-red-500">❤</span> by <a href="https://www.linkedin.com/in/roma-doni-b62750226/" target="_blank" class="font-bold text-primary">Romadoni</a>, using <a href="https://tailwindcss.com" target="_blank" class="font-bold text-sky-500">Tailwind CSS</a></p>
-     </div>
-   </div>
-  </section>
-  <!-- Footer Section End -->
-
-  <!-- Button to Top Start -->
-  <a href="#home"id="to-top" class="right-4 hidden justify-center items-center h-14 w-14 bg-primary rounded-full fixed z-[9999] bottom-4 p-4 hover:animate-bounce">
-    <span class="block h-5 w-5 border-t-2 border-l-2 rotate-45 mt-2"></span>
-  </a>
-  <!-- Button to Top End -->
-  <!-- js me -->
-  <script src="dist/js/script.js"></script>
-
-</body>
+    <!-- Button to Top Start -->
+    <a
+      href="#home"
+      id="to-top"
+      class="fixed right-4 bottom-4 z-[9999] hidden h-14 w-14 items-center justify-center rounded-full bg-primary p-4 hover:animate-bounce"
+    >
+      <span class="mt-2 block h-5 w-5 rotate-45 border-t-2 border-l-2"></span>
+    </a>
+    <!-- Button to Top End -->
+    <!-- js me -->
+    <script src="dist/js/script.js"></script>
+  </body>
 </html>
